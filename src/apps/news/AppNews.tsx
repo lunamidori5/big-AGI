@@ -63,7 +63,7 @@ export function AppNews() {
   const combinedItems = [...MidoriAIItems, ...NewsItems];
   const news = combinedItems.filter((_, idx) => idx <= lastNewsIdx);
   //const news = NewsItems.filter((_, idx) => idx <= lastNewsIdx);
-  const firstNews = news[0] ?? null;
+  const firstNews = news[1] ?? null;
 
   // show expander
   const canExpand = news.length < NewsItems.length;
@@ -88,6 +88,7 @@ export function AppNews() {
 
         <Typography sx={{ mb: 2 }} level='title-sm'>
           {capitalizeFirstLetter(Brand.Title.Base)} has been updated to version {firstNews?.versionCode}
+          You are running Big-AGI in the Midori AI Subsystem! Thank you!
         </Typography>
 
         <Box sx={{ mb: 5 }}>
