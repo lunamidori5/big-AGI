@@ -13,6 +13,7 @@ import { animationColorBlues, animationColorRainbow } from '~/common/util/animUt
 import { capitalizeFirstLetter } from '~/common/util/textUtils';
 
 import { NewsItems } from './news.data';
+import { MidoriAIItems } from './midoriai.data';
 import { beamNewsCallout } from './beam.data';
 import { bigAgi2NewsCallout } from './bigAgi2.data';
 
@@ -59,7 +60,9 @@ export function AppNews() {
   const [lastNewsIdx, setLastNewsIdx] = React.useState<number>(NEWS_INITIAL_COUNT - 1);
 
   // news selection
-  const news = NewsItems.filter((_, idx) => idx <= lastNewsIdx);
+  const combinedItems = [...MidoriAIItems, ...NewsItems];
+  const news = combinedItems.filter((_, idx) => idx <= lastNewsIdx);
+  //const news = NewsItems.filter((_, idx) => idx <= lastNewsIdx);
   const firstNews = news[0] ?? null;
 
   // show expander
