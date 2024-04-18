@@ -52,7 +52,7 @@ export const MidoriAIItems: NewsItem[] = [
   {
     versionCode: 'Red Satinbird',
     versionName: 'Big-AGI x Midori AI Subsystem',
-    versionDate: new Date('2024-04-18T08:00:00Z'),
+    //versionDate: new Date('2024-04-18T08:00:00Z'),
     versionCoverImage: midoriaicoverV1,
     items: [
       { 
