@@ -48,8 +48,7 @@ export function MidoriAISourceSetup(props: { sourceId: DModelSourceId }) {
   return <>
 
     <Typography level='body-sm' sx={{ whiteSpace: 'break-spaces', mt: 0.5, ml: 0.1 }}>
-      This endpoint is generously provided by Luna Midori (<Link href='https://github.com/lunamidori5' target='_blank'>GitHub</Link>), a valued member of the community, 
-      as part of her <Link href='https://io.midori-ai.xyz/subsystem/manager' target='_blank'>Midori AI Subsystem</Link>. <br /><br />
+      This endpoint is generously provided by Luna Midori (<Link href='https://github.com/lunamidori5' target='_blank'>GitHub</Link>), as part of her <Link href='https://io.midori-ai.xyz/subsystem/manager' target='_blank'>Midori AI Subsystem</Link>. <br /><br />
 
       Please use this link to get a API Key <br /><Link href='https://tea-cup.midori-ai.xyz/stream-file/568fa97410b2770fe337c06e65a1ce2cdfb24e9cffb238e0ce2003d09b606cc110fe44d6b2fab803beb40f70c5b86ff4.txt' target='_blank'>Get API Key</Link><br /><br />
       
