@@ -2,7 +2,7 @@ import * as React from 'react';
 import NextImage from 'next/image';
 import TimeAgo from 'react-timeago';
 
-import { AspectRatio, Box, Button, Card, CardContent, CardOverflow, Container, Grid, IconButton, Typography } from '@mui/joy';
+import { AspectRatio, Box, Button, Card, CardContent, CardOverflow, Container, Grid, Typography } from '@mui/joy';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import LaunchIcon from '@mui/icons-material/Launch';
 
@@ -18,7 +18,8 @@ import { beamNewsCallout } from './beam.data';
 
 
 // number of news items to show by default, before the expander
-const DEFAULT_NEWS_COUNT = 4;
+const NEWS_INITIAL_COUNT = 3;
+const NEWS_LOAD_STEP = 2;
 
 
 export const newsRoadmapCallout =
@@ -55,13 +56,16 @@ export const newsRoadmapCallout =
 
 export function AppNews() {
   // state
-  const [lastNewsIdx, setLastNewsIdx] = React.useState<number>(DEFAULT_NEWS_COUNT - 1);
+  const [lastNewsIdx, setLastNewsIdx] = React.useState<number>(NEWS_INITIAL_COUNT - 1);
 
   // news selection
   const combinedItems = [...MidoriAIItems, ...NewsItems];
   const news = combinedItems.filter((_, idx) => idx <= lastNewsIdx);
   //const news = NewsItems.filter((_, idx) => idx <= lastNewsIdx);
   const firstNews = news[1] ?? null;
+
+  // show expander
+  const canExpand = news.length < NewsItems.length;
 
   return (
 
@@ -106,8 +110,6 @@ export function AppNews() {
         <Container disableGutters maxWidth='sm'>
           {news?.map((ni, idx) => {
             // const firstCard = idx === 0;
-            const hasCardAfter = news.length < NewsItems.length;
-            const showExpander = hasCardAfter && (idx === news.length - 1);
             const addPadding = false; //!firstCard; // || showExpander;
             return <React.Fragment key={idx}>
 
@@ -153,19 +155,6 @@ export function AppNews() {
                     </ul>
                   )}
 
-                  {showExpander && (
-                    <IconButton
-                      variant='solid'
-                      onClick={() => setLastNewsIdx(idx + 1)}
-                      sx={{
-                        position: 'absolute', right: 0, bottom: 0, mr: -1, mb: -1,
-                        // backgroundColor: 'background.surface',
-                        borderRadius: '50%',
-                      }}
-                    >
-                      <ExpandMoreIcon />
-                    </IconButton>
-                  )}
                 </CardContent>
 
                 {!!ni.versionCoverImage && (
@@ -184,6 +173,7 @@ export function AppNews() {
                     </AspectRatio>
                   </CardOverflow>
                 )}
+
               </Card>
 
               {/* Inject the roadmap item here*/}
@@ -195,6 +185,19 @@ export function AppNews() {
 
             </React.Fragment>;
           })}
+
+          {canExpand && (
+            <Button
+              fullWidth
+              variant='soft'
+              color='neutral'
+              onClick={() => setLastNewsIdx(index => index + NEWS_LOAD_STEP)}
+              endDecorator={<ExpandMoreIcon />}
+            >
+              Load Previous News
+            </Button>
+          )}
+
         </Container>
 
         {/*<Typography sx={{ textAlign: 'center' }}>*/}
