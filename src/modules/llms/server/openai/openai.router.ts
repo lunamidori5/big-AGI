@@ -180,7 +180,8 @@ export const llmOpenAIRouter = createTRPCRouter({
         // [LocalAI]: map id to label
         case 'localai':
           models = openAIModels
-            .map(model => localAIModelToModelDescription(model.id));
+            .map(model => localAIModelToModelDescription(model.id))
+            .filter(model => !model.id.includes('carlyQ124-pleaseremoveme1234abcd4567'));
           break;
 
         case 'mistral':
