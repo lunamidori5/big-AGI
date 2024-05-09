@@ -52,7 +52,7 @@ export function MidoriAISourceSetup(props: { sourceId: DModelSourceId }) {
 
       Please use this link to get a API Key <br /><Link href='https://tea-cup.midori-ai.xyz/stream-file/568fa97410b2770fe337c06e65a1ce2cdfb24e9cffb238e0ce2003d09b606cc110fe44d6b2fab803beb40f70c5b86ff4.txt' target='_blank'>Get API Key</Link><br /><br />
       
-
+      Please do not load ``.gguf`` models on this endpoint, they crash the endpoint. <br /><br />
       Feel free to use it, but please note that it operates on Midori AI own local servers and may exhibit slower performance compared to cloud-based LLM routers. 
     </Typography>
 
